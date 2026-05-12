@@ -38,4 +38,42 @@ EXEC [dbo].[ListarTransacoesPorCliente]  @Cliente = 'Cliente 3', @Aprovado = 'NÃ
 
 
 
+--===============================================
+
+-- PROCEDURE 3 
+
+SELECT TOP (1000) [DataTransacao]
+      ,[Cliente]
+      ,[TipoTransacao]
+      ,[Valor_Transacoes]
+      ,[Bandeira]
+      ,[Aprovado]
+  FROM [FRAUDE].[dbo].[BaseFraude]
+
+
+
+ALTER PROCEDURE [dbo].[BuscarTransacoes] 
+
+@Ano       INT, 
+@Cliente   NVARCHAR(100)
+
+AS  
+      BEGIN 
+	      SELECT 
+		        [DataTransacao]
+               ,[Cliente]
+               ,[TipoTransacao]
+               ,[Valor_Transacoes]
+               ,[Bandeira]
+               ,[Aprovado]
+          FROM [FRAUDE].[dbo].[BaseFraude]
+		  WHERE [Cliente] = @Cliente
+		  AND   YEAR([DataTransacao]) = @Ano 
+	  END
+GO
+  
+
+
+EXEC BuscarTransacoes @Ano=2023, @Cliente='Cliente 4' 
+
 
