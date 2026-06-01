@@ -32,9 +32,7 @@ AS
          )  
 
          BEGIN 
-
                  -- RETORNAR AS TRANSAÇÕES SUSPEITAS 
-
                 SELECT 
                            [DataTransacao]
                           ,[Cliente]
@@ -58,7 +56,5 @@ AS
           END 
    END 
 GO 
-
-
 
 EXEC TransacoesForaPadrao  @Clientes = 'Cliente 8'
