@@ -48,3 +48,22 @@ WITH (
 )
 
 SELECT * FROM dbo.tb_Transacoes
+
+--==============================================
+
+-- CRIANDO A FUNCTION 
+
+CREATE FUNCTION dbo.fn_Saudacao (@nome NVARCHAR(100))
+RETURNS NVARCHAR(200)
+AS 
+   BEGIN 
+        RETURN 'Olá, ' + @nome + '! Bem-vindo ao SQL Server.'   
+   END 
+
+SELECT 
+      [DataTransacao],
+      dbo.fn_Saudacao([Cliente]) AS [SAUDACAO],
+      [Valor_Transacoes]
+FROM dbo.tb_Transacoes
+
+
